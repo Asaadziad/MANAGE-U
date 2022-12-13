@@ -1,0 +1,13 @@
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  padding: 5px;
+  color: rgb(242, 242, 242);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  & i {
+    color: gold;
+  }
+}
