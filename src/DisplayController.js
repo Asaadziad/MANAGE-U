@@ -58,7 +58,7 @@ export function displayTasks() {
   content.innerHTML = `Welcome back ${userName}`;
   content.innerHTML += `<div class="d-flex justify-content-center"><input type="text" name="task" placeholder="New Task" id="task" style="padding:10px;margin:5px;width:50%;border-radius:5px;"></input><button class="btn btn-warning" style="min-width:50px;" onclick="addTask()"><i class="fas fa-plus"></i></button></div>`;
   content.innerHTML += `<h2 class="mt-5 text-success" style="text-align:center;">Active</h2><div class="d-flex justify-content-center mt-2"><ul class="list-group" id="active"></ul></div>`;
-  content.innerHTML += `<h2 class="mt-5 text-danger" style="text-align:center;">Completed</h2><div class="d-flex justify-content-center"><ul class="list-group" id="completed"></ul></div>`;
+  content.innerHTML += `<h2 class="mt-5 text-danger" style="text-align:center;">Completed</h2><div class="d-flex justify-content-center mb-5 text-decoration-line-through"><ul class="list-group" id="completed"></ul></div>`;
   let currentTasksArr = JSON.parse(localStorage.getItem("tasks"));
   if (!currentTasksArr) {
     currentTasksArr = [];
@@ -75,7 +75,7 @@ export function displayTasks() {
     completedTasks.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="min-width:400px;">${element.description}<span><button class="btn btn-success disabled"><i class="fas fa-check-double"></i></button><button class="btn btn-primary ms-1 disabled"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1 disabled" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-trash"></i></button></span></li>`;
   });
   active.forEach((element) => {
-    activeTasks.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="min-width:400px;">${element.description}<span><button class="btn btn-success" onclick="completeTask(${element.id})"><i class="fas fa-check"></i></button><button class="btn btn-primary ms-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="deleteTask(${element.id})"><i class="fas fa-trash"></i></button></span></li>`;
+    activeTasks.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="min-width:400px;">${element.description}<span><button class="btn btn-success" onclick="completeTask(${element.id})"><i class="fas fa-check"></i></button><button class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editTask(${element.id})"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="deleteTask(${element.id})"><i class="fas fa-trash"></i></button></span></li>`;
   });
 }
 
@@ -97,4 +97,17 @@ export function checkConfirm() {
   header.innerHTML += "Confirm delete";
   footer.innerHTML = "";
   footer.innerHTML += `<button class="btn btn-danger" id="deleteTaskBtn" data-bs-dismiss="modal">Delete</button><button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>`;
+}
+
+export function editTemplate() {
+  const modal = document.getElementById("mBody");
+  const header = document.getElementById("exampleModalLabel");
+  const footer = document.getElementById("mFooter");
+  modal.innerHTML = "";
+  modal.innerHTML +=
+    "<p>Enter new task description:</p><input type='text' id='taskNewDescription'>";
+  header.innerHTML = "";
+  header.innerHTML += "Edit task";
+  footer.innerHTML = "";
+  footer.innerHTML += `<button class="btn btn-primary" id="saveTaskBtn" data-bs-dismiss="modal">Save changes</button><button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>`;
 }

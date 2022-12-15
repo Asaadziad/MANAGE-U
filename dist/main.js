@@ -5,6 +5,7 @@ import {
   displayLogin,
   displayRegister,
   displayTasks,
+  editTemplate,
   sendAlert,
 } from "../src/DisplayController.js";
 import TaskManager from "../src/TaskManager.js";
@@ -86,6 +87,19 @@ window.deleteTask = function deleteTask(taskId) {
 window.completeTask = function completeTask(taskId) {
   taskManager.completeTask(taskId);
   displayTasks();
+};
+
+window.editTask = function editTask(taskId) {
+  editTemplate();
+  const saveTaskBtn = document.getElementById("saveTaskBtn");
+  if (!saveTaskBtn) return;
+  saveTaskBtn.addEventListener("click", () => {
+    taskManager.updateTaskDescription(
+      taskId,
+      document.getElementById("taskNewDescription").value
+    );
+    displayTasks();
+  });
 };
 
 window.confirm = function confirm() {
