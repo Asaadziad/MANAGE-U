@@ -30,4 +30,4 @@ To mark a task as complete, click on the checkbox next to the task. Completed ta
 
 # Contributing
 
-If you have suggestions for improvements or want to report a bug, please open an issue or submit a pull request. We welcome all contributions!
+If you have suggestions for improvements or want to report a bug, please open an issue or submit a pull request.
