@@ -83,6 +83,11 @@ window.deleteTask = function deleteTask(taskId) {
   });
 };
 
+window.completeTask = function completeTask(taskId) {
+  taskManager.completeTask(taskId);
+  displayTasks();
+};
+
 window.confirm = function confirm() {
   checkConfirm();
 };
