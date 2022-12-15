@@ -1,5 +1,6 @@
 import Task from "../src/Task.js";
 import {
+  checkConfirm,
   displayHeader,
   displayLogin,
   displayRegister,
@@ -69,4 +70,19 @@ window.showLogin = function showLogin() {
 
 window.showRegister = function showRegister() {
   displayRegister();
+};
+
+window.deleteTask = function deleteTask(taskId) {
+  checkConfirm();
+  const deleteBtn = document.getElementById("deleteTaskBtn");
+  if (!deleteBtn) return;
+  deleteBtn.addEventListener("click", () => {
+    taskManager.deleteTask(taskId);
+    console.log(taskManager.tasks);
+    displayTasks();
+  });
+};
+
+window.confirm = function confirm() {
+  checkConfirm();
 };
