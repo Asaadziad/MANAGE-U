@@ -13,12 +13,14 @@ A simple task manager web app built using JavaScript ES6, HTML5, CSS, and Bootst
 
 # Features
 
-- Create new tasks with a description and due date
+- Create new tasks with a description
 - Edit and delete existing tasks
 - Mark tasks as complete
-- View a list of all tasks, sorted by due date
-- Installation
-- To use this app, clone the repository and open the index.html file in your browser. No additional setup is required.
+- View a list of all tasks
+
+# Installation
+
+To use this app, clone the repository and open the index.html file in your browser. No additional setup is required.
 
 # Usage
 
