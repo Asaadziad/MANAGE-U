@@ -12,13 +12,13 @@ export default class UserManager {
     localStorage.setItem("users", JSON.stringify(currentUsersArr));
     this.users = currentUsersArr;
   }
-  deleteUser(name) {
+  deleteUser(userId) {
     let currentUsersArr = JSON.parse(localStorage.getItem("users"));
     if (!currentUsersArr) {
       currentUsersArr = [];
     }
     currentUsersArr = currentUsersArr.filter((item) => {
-      return item.get("name") != name;
+      return item.get("id") != userId;
     });
     localStorage.setItem("users", JSON.stringify(currentUsersArr));
     this.users = currentUsersArr;
@@ -28,12 +28,23 @@ export default class UserManager {
     if (!currentUsersArr) {
       currentUsersArr = [];
     }
-    console.log(currentUsersArr);
     for (let i = 0; i < currentUsersArr.length; i++) {
       if (
         currentUsersArr[i].name == name &&
         currentUsersArr[i].password == password
       ) {
+        return true;
+      }
+    }
+    return false;
+  }
+  checkUserExists(name) {
+    let currentUsersArr = JSON.parse(localStorage.getItem("users"));
+    if (!currentUsersArr) {
+      currentUsersArr = [];
+    }
+    for (let i = 0; i < currentUsersArr.length; i++) {
+      if (currentUsersArr[i].name == name) {
         return true;
       }
     }

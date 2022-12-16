@@ -9,6 +9,7 @@ export function displayRegister() {
   const alerts = document.getElementById("alerts");
   if (!content || !alerts) return;
   alerts.innerHTML = "";
+  content.innerHTML = "";
   content.innerHTML += `<div class="d-flex justify-content-center">
   
   <form style="min-width:25vw;max-width:30vw;">
@@ -64,10 +65,10 @@ export function displayTasks() {
     currentTasksArr = [];
   }
   const completed = currentTasksArr.filter((item) => {
-    return item.completed;
+    return item.completed && item.userName == userName;
   });
   const active = currentTasksArr.filter((item) => {
-    return !item.completed;
+    return !item.completed && item.userName == userName;
   });
   const activeTasks = document.getElementById("active");
   const completedTasks = document.getElementById("completed");
@@ -82,9 +83,13 @@ export function displayTasks() {
 export function sendAlert(text, type) {
   const alert = document.getElementById("alerts");
   if (!alert) return;
+  alert.innerHTML = "";
   alert.innerHTML += `<div class="alert alert-${type}" style="min-width:400px;text-align:center;" role="alert">
   ${text}
 </div>`;
+  setTimeout(() => {
+    alert.innerHTML = "";
+  }, 3000);
 }
 
 export function checkConfirm() {

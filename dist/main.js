@@ -31,6 +31,10 @@ window.Register = function Register() {
   event.preventDefault();
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
+  if (userManager.checkUserExists(username)) {
+    sendAlert("Username already exists!", "danger");
+    return;
+  }
   userManager.addUser(new User(username, password));
   displayLogin();
   sendAlert("Registered successfuly!", "success");
@@ -57,9 +61,11 @@ window.addTask = function addTask() {
   const desc = document.getElementById("task");
   if (!desc) return;
   if (desc.value == "") {
-    taskManager.addTask(new Task("New Task"));
+    sendAlert("Add task description", "danger");
   } else {
-    taskManager.addTask(new Task(desc.value));
+    taskManager.addTask(
+      new Task(desc.value, localStorage.getItem("loggedUser"))
+    );
   }
 
   displayTasks();
