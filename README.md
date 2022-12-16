@@ -15,6 +15,8 @@ A simple task manager web app built using JavaScript ES6, HTML5, CSS, and Bootst
 
 I am using Localstorage as "Database" to save users and tasks.
 
+[Live Demo](https://asaadziad-manage-u.netlify.app/)
+
 # Features
 
 - Register (Create account)
