@@ -56,7 +56,9 @@ export function displayTasks() {
   const content = document.getElementById("content");
   if (!content) return;
   const userName = localStorage.getItem("loggedUser");
-  content.innerHTML = `Welcome back ${userName}`;
+  content.innerHTML = "";
+  content.innerHTML += `<div class="d-flex justify-content-between"><i class="fas fa-user fa-xl"> ${userName}</i><button class="btn btn-danger" onclick="Logout()">Logout</button></div>`;
+  content.innerHTML += `Welcome back ${userName}, `;
   content.innerHTML += `<div class="d-flex justify-content-center"><input type="text" name="task" placeholder="New Task" id="task" style="padding:10px;margin:5px;width:50%;border-radius:5px;"></input><button class="btn btn-warning" style="min-width:50px;" onclick="addTask()"><i class="fas fa-plus"></i></button></div>`;
   content.innerHTML += `<h2 class="mt-5 text-success" style="text-align:center;">Active</h2><div class="d-flex justify-content-center mt-2"><ul class="list-group" id="active"></ul></div>`;
   content.innerHTML += `<h2 class="mt-5 text-danger" style="text-align:center;">Completed</h2><div class="d-flex justify-content-center mb-5 text-decoration-line-through"><ul class="list-group" id="completed"></ul></div>`;
@@ -76,7 +78,7 @@ export function displayTasks() {
     completedTasks.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="min-width:400px;">${element.description}<span><button class="btn btn-success disabled"><i class="fas fa-check-double"></i></button><button class="btn btn-primary ms-1 disabled"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1 disabled" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-trash"></i></button></span></li>`;
   });
   active.forEach((element) => {
-    activeTasks.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="min-width:400px;">${element.description}<span><button class="btn btn-success" onclick="completeTask(${element.id})"><i class="fas fa-check"></i></button><button class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editTask(${element.id})"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="deleteTask(${element.id})"><i class="fas fa-trash"></i></button></span></li>`;
+    activeTasks.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="min-width:400px;"><span>${element.description}</span><span><button class="btn btn-success" onclick="completeTask(${element.id})"><i class="fas fa-check"></i></button><button class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editTask(${element.id})"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="deleteTask(${element.id})"><i class="fas fa-trash"></i></button></span></li>`;
   });
 }
 
@@ -84,7 +86,7 @@ export function sendAlert(text, type) {
   const alert = document.getElementById("alerts");
   if (!alert) return;
   alert.innerHTML = "";
-  alert.innerHTML += `<div class="alert alert-${type}" style="min-width:400px;text-align:center;" role="alert">
+  alert.innerHTML += `<div class="alert alert-${type} alertAnimated" style="min-width:400px;text-align:center;" role="alert">
   ${text}
 </div>`;
   setTimeout(() => {

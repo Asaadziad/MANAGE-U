@@ -108,6 +108,12 @@ window.editTask = function editTask(taskId) {
   });
 };
 
+window.Logout = function Logout() {
+  localStorage.setItem("loggedUser", null);
+  localStorage.setItem("isLogged", false);
+  displayLogin();
+};
+
 window.confirm = function confirm() {
   checkConfirm();
 };

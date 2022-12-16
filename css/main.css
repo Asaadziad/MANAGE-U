@@ -15,3 +15,36 @@
 body {
   background-color: rgb(242, 242, 242);
 }
+
+.alertAnimated {
+  position: fixed;
+  z-index: 1000000;
+  -webkit-animation-name: alertAnim;
+          animation-name: alertAnim;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: 10s;
+          animation-iteration-count: 10s;
+}
+
+@-webkit-keyframes alertAnim {
+  from {
+    transform: translateX(90px);
+  }
+  to {
+    transform: translateX(-90px);
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes alertAnim {
+  from {
+    transform: translateX(90px);
+  }
+  to {
+    transform: translateX(-90px);
+    opacity: 0;
+    display: none;
+  }
+}

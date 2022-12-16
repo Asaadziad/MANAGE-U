@@ -11,12 +11,18 @@ A simple task manager web app built using JavaScript ES6, HTML5, CSS, and Bootst
 - CSS: Used for the app's styling and design
 - Bootstrap: Used for the app's responsive layout and styling
 
+# More info
+
+I am using Localstorage as "Database" to save users and tasks.
+
 # Features
 
+- Register (Create account)
+- Login
 - Create new tasks with a description
 - Edit and delete existing tasks
 - Mark tasks as complete
-- View a list of all tasks
+- View a list of all tasks for each specific user
 
 # Installation
 
