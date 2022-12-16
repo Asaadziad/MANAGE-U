@@ -35,6 +35,10 @@ window.Register = function Register() {
     sendAlert("Username already exists!", "danger");
     return;
   }
+  if (username == "" || password == "") {
+    sendAlert("Please enter missing info", "danger");
+    return;
+  }
   userManager.addUser(new User(username, password));
   displayLogin();
   sendAlert("Registered successfuly!", "success");
@@ -52,6 +56,7 @@ window.Login = function Login() {
       document.getElementById("username").value
     );
     displayTasks();
+    sendAlert("Welcome back!", "primary");
   } else {
     sendAlert("Wrong Information!", "danger");
   }
